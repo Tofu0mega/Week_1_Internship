@@ -7,3 +7,7 @@ venv/
 # SQLite database file
 *.db
 *.sqlite3
+
+# Pycaches
+__pycache__/
+*.pyc
