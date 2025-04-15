@@ -2,16 +2,17 @@
 ??-Not sure to Impliment
 !!-Core features
 ## 🟦 To Do
-CLI Menu !!
-POSTGRES DB Setup??
 Transaction Functions !!
-Catagorization Functions !!
-Transaction History Clear Display !!
-Analitics !!
-Budgeting
+Budgeting Functions !!
+Transaction History Display !!
+Catagorization !!
+
 
 
 
 ## 🟨 Doing
 
 ## 🟩 Done
+
+POSTGRES DB Setup??
+CLI Menu !!

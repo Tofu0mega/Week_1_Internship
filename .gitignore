@@ -1,0 +1,9 @@
+# Virtual environments
+.env/
+.venv/
+env/
+venv/
+
+# SQLite database file
+*.db
+*.sqlite3
