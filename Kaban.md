@@ -7,12 +7,6 @@ Budgeting Functions !!
 Transaction History Display !!
 Catagorization !!
 
-
-
-
-## 🟨 Doing
-
 ## 🟩 Done
-
-POSTGRES DB Setup??
 CLI Menu !!
+POSTGRES DB Setup??
