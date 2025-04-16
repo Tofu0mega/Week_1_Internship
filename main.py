@@ -13,13 +13,14 @@ def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
+# reset_schema()
+
 # Development Mode
-reset_schema()
-seed_data()
+# seed_data()
 
 
-# demonstration Mode
-# init_db()
+# Demonstration Mode
+init_db()
 # def getch():
 #     return msvcrt.getch().decode('utf-8')
 

@@ -11,12 +11,12 @@ categories_path = "data/allowed_categories.json"
 
 default_categories = {
     "categories": [
-        "Bill Sharing",
-        "Family Expenses",
-        "Groceries",
-        "Lend/Borrow",
-        "Personal Use",
-        "Ride Sharing"
+         "Food",
+        "Entertainment",
+        "Transportation",
+        "Education",
+        "Michalleneous",
+        "Rent"
     ]
 }
 
