@@ -129,3 +129,45 @@ def display_table(cursor,Status=False):
             print("No Records to Show")
         else:
             print(dataframe.to_string(index=False))
+            
+            
+def delete_record(id):
+    try:
+        result=cursor.execute("DELETE FROM expenses WHERE id = ?",(id,))
+        if result.rowcount == 0:
+            return 0;
+        else :
+            connection.commit()
+            return 1;
+    except Exception as e:
+        print(e)
+        input("Press Enter to Exit")
+    
+def edit_record(NewData):
+    try:
+        targetid=NewData["id"]
+        newname=NewData["name"]
+        newamount=NewData["amount"]
+        newcategory=NewData["category"]
+        result= cursor.execute("UPDATE expenses SET name=?,amount=?,category=? WHERE id=?",(newname,newamount,newcategory,targetid))
+        if result.rowcount == 0:
+            return 0;
+        else :
+            connection.commit()
+            return 1;
+    except Exception as e:
+        print(e)
+        input("Press Enter to Continue")
+
+def check_record(id):
+    try:
+        result=cursor.execute("SELECT * FROM expenses WHERE id = ?",(id,))
+        row=result.fetchone()
+        if row is None:
+            return False;
+        else :
+            return True;
+    except Exception as e:
+        print(e)
+        input("Press Enter to Exit")
+           
