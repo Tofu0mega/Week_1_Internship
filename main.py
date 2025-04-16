@@ -1,6 +1,7 @@
 from DB.dbconfig import init_db,get_conn,reset_schema
 from Controllers.Transactions import Make_Transaction,View_Transaction_History,View_Transactions_By_Categories
 from Controllers.Budgets import Define_Budget,View_Budget
+from Controllers.Seeder import seed_data
 import os
 # import time
 connection=get_conn()
@@ -10,7 +11,14 @@ exit_flag=True
 
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+
+# Development Mode
 reset_schema()
+seed_data()
+
+
+# demonstration Mode
 # init_db()
 # def getch():
 #     return msvcrt.getch().decode('utf-8')

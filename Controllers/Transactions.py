@@ -1,5 +1,5 @@
 from DB.dbconfig import get_conn, get_cursor
-from DB.DB_Operations import Add_Transaction, getalltransaction,getamount_by_category
+from DB.DB_Operations import Add_Transaction, getalltransaction,getamount_by_category,display_table,get_status
 import os
 import json
 categories_path ="data/allowed_categories.json"
@@ -50,16 +50,15 @@ def Make_Transaction():
 def View_Transaction_History():
     cls()
     print("Transaction History:")
-    print(getalltransaction())
+    display_table(getalltransaction())
     input("Press Enter to continue...")
 
     
 def View_Transactions_By_Categories():
     cls()
     print("Transactions by Categories")   
-    print(getamount_by_category())
+    display_table(getamount_by_category(),Status=True)    
     input("Press Enter to Continue")            
     
     
     
-  

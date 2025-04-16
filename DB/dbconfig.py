@@ -46,7 +46,7 @@ def init_db():
             name TEXT NOT NULL,
             amount REAL NOT NULL,
             category TEXT {check_clause},
-            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+            transaction_date_time DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     ''')
 

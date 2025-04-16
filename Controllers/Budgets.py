@@ -1,5 +1,5 @@
 from DB.dbconfig import get_conn, get_cursor
-from DB.DB_Operations import definebudget,getdefinedbudget
+from DB.DB_Operations import definebudget,getdefinedbudget,display_table
 import os
 import json
 categories_path ="data/allowed_categories.json"
@@ -8,6 +8,7 @@ with open(categories_path, "r") as f:
     allowed_categories = category_data["categories"]
 cursor=get_cursor()
 connection=get_conn()
+
 
 
 def cls():
@@ -45,5 +46,5 @@ def Define_Budget():
 def View_Budget():
     cls()
     print("Current Budget Listing")
-    print(getdefinedbudget())
+    display_table(getdefinedbudget())
     input("Press Enter to Continue")
