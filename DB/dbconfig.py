@@ -11,7 +11,7 @@ categories_path = "data/allowed_categories.json"
 
 default_categories = {
     "categories": [
-         "Food",
+        "Food",
         "Entertainment",
         "Transportation",
         "Education",

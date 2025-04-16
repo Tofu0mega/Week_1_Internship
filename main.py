@@ -13,14 +13,14 @@ def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 #Clean Start( Databse is reset on every execution)
-reset_schema()
+# reset_schema()
 
 # Development Mode ( Has seed data to test functions)
-seed_data()
+# seed_data()
 
 
 # Demonstration Mode ( Stores records between runtimes but has no seed data)
-# init_db()
+init_db()
 # def getch():
 #     return msvcrt.getch().decode('utf-8')
 
