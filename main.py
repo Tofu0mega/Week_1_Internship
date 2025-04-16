@@ -1,21 +1,29 @@
-from DB.dbconfig import init_db,get_conn
-import time
+from DB.dbconfig import init_db,get_conn,reset_schema
+from Controllers.Transactions import Make_Transaction,View_Transaction_History,View_Transactions_By_Categories
+from Controllers.Budgets import Define_Budget,View_Budget
+import os
+# import time
 connection=get_conn()
 # import msvcrt
 exit_flag=True
 
-init_db()
+
+def cls():
+    os.system('cls' if os.name == 'nt' else 'clear')
+reset_schema()
+# init_db()
 # def getch():
 #     return msvcrt.getch().decode('utf-8')
 
 
 def menu_display():
+    cls()
     print("""
     1.Make Transaction
     2.View Transaction History
     3.Set Budget
     4.View Current Budget
-    5.View Transaction By Categories
+    5.View Transaction By Categories with Budgeting
     6.Exit
     """)
 
@@ -23,15 +31,15 @@ def menu_display():
 def Handler(key):
     global exit_flag
     if key == '1':
-        print("Make Transaction ")
+        Make_Transaction()
     elif key == '2':
-        print("View Transaction Historu")
+        View_Transaction_History()
     elif key == '3':
-        print("Set Budget")
+       Define_Budget()
     elif key == '4':
-        print("View Current Budget")
+        View_Budget()
     elif key == '5':
-        print("View Transaction By Category")
+       View_Transactions_By_Categories()
     elif key == '6':
         print("Commiting any Pending Transactions")
         connection.commit()
