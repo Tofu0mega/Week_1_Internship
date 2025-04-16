@@ -26,10 +26,20 @@ def Add_Transaction(Transaction):
 
     
 
-def getalltransaction():
+def getalltransactionmnth():
     try:
         startofmnth=get_month_start()
         transactiontable=cursor.execute("SELECT * FROM expenses WHERE date >=?",(startofmnth,))
+        
+        return transactiontable
+    except Exception as e:
+        print(e)
+        input("Press Enter to continue...")
+        
+def getalltransaction():
+    try:
+      
+        transactiontable=cursor.execute("SELECT * FROM expenses ")
         
         return transactiontable
     except Exception as e:
@@ -56,7 +66,7 @@ def definebudget(Transaction):
         INSERT INTO budgets (category, budget)
         VALUES (?, ?)
         ON CONFLICT(category) DO UPDATE SET
-            budget = excluded.budget,
+            budget = excluded.budget
             
         ''', (category, amount))
         connection.commit()

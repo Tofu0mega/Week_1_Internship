@@ -1,5 +1,5 @@
 from DB.dbconfig import get_conn, get_cursor
-from DB.DB_Operations import Add_Transaction, getalltransaction,getamount_by_category,display_table,get_status
+from DB.DB_Operations import Add_Transaction, getalltransaction,getamount_by_category,display_table,get_status,getalltransactionmnth
 import os
 import json
 categories_path ="data/allowed_categories.json"
@@ -61,4 +61,8 @@ def View_Transactions_By_Categories():
     input("Press Enter to Continue")            
     
     
-    
+def View_This_Mnths_Transactions():
+    cls()
+    print("This Months Transactions")
+    display_table(getalltransactionmnth())
+    input("Press Enter to Continue")

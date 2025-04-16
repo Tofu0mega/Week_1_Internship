@@ -1,5 +1,5 @@
 from DB.dbconfig import init_db,get_conn,reset_schema
-from Controllers.Transactions import Make_Transaction,View_Transaction_History,View_Transactions_By_Categories
+from Controllers.Transactions import Make_Transaction,View_Transaction_History,View_Transactions_By_Categories,View_This_Mnths_Transactions
 from Controllers.Budgets import Define_Budget,View_Budget
 from Controllers.Seeder import seed_data
 import os
@@ -16,11 +16,11 @@ def cls():
 reset_schema()
 
 # Development Mode
-# seed_data()
+seed_data()
 
 
 # Demonstration Mode
-init_db()
+# init_db()
 # def getch():
 #     return msvcrt.getch().decode('utf-8')
 
@@ -29,11 +29,12 @@ def menu_display():
     cls()
     print("""
     1.Make Transaction
-    2.View Transaction History
-    3.Set Budget
-    4.View Current Budget
-    5.View Transaction By Categories with Budgeting
-    6.Exit
+    2.View This Months Transaction
+    3.View Transaction History
+    4.Set Budget
+    5.View Current Budget
+    6.View Transaction By Categories with Budgeting
+    7.Exit
     """)
 
 
@@ -41,15 +42,17 @@ def Handler(key):
     global exit_flag
     if key == '1':
         Make_Transaction()
-    elif key == '2':
-        View_Transaction_History()
+    if key == '2':
+        View_This_Mnths_Transactions()
     elif key == '3':
-       Define_Budget()
+        View_Transaction_History()
     elif key == '4':
-        View_Budget()
+       Define_Budget()
     elif key == '5':
-       View_Transactions_By_Categories()
+        View_Budget()
     elif key == '6':
+       View_Transactions_By_Categories()
+    elif key == '7':
         print("Commiting any Pending Transactions")
         connection.commit()
         print("Commited...Exiting")
