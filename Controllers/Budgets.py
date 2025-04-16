@@ -28,7 +28,7 @@ def Define_Budget():
             print("Invalid Input Try again")
     while(True):        
         amount=input(f"Enter Budget Amount for {category}: ")
-        if amount.isdigit() and int(amount) < 0:
+        if amount.isdigit() and int(amount) > 0:
                 
                 break
         else:

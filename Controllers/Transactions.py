@@ -21,7 +21,7 @@ def Make_Transaction():
     name=input("Enter Transaction Name: ")
     while(True):        
         amount=input("Enter Transaction Amount(in NRS): ")
-        if amount.isdigit() and int(amount) < 0:
+        if amount.isdigit() and int(amount) > 0:
                 
                 break
         else:
