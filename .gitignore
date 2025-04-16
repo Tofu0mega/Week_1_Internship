@@ -11,3 +11,4 @@ venv/
 # Pycaches
 __pycache__/
 *.pyc
+   
