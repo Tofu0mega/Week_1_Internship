@@ -1,7 +1,15 @@
 from .dbconfig import get_conn, get_cursor
+from datetime import datetime,timedelta
 import pandas as pd
 cursor=get_cursor()
 connection=get_conn()
+
+def get_month_start():
+    today=datetime.today()
+    start_of_month=today.replace(day=1)
+    return start_of_month.strftime('%Y-%m-%d')
+
+
 def Add_Transaction(Transaction):
     try:
         name = Transaction["name"]
@@ -20,7 +28,8 @@ def Add_Transaction(Transaction):
 
 def getalltransaction():
     try:
-        transactiontable=cursor.execute("SELECT * FROM expenses")
+        startofmnth=get_month_start()
+        transactiontable=cursor.execute("SELECT * FROM expenses WHERE date >=?",(startofmnth,))
         
         return transactiontable
     except Exception as e:
@@ -30,6 +39,7 @@ def getalltransaction():
 
 def getdefinedbudget():
     try:
+      
         budgettable=cursor.execute("SELECT * FROM budgets")
         
         return budgettable
@@ -47,7 +57,7 @@ def definebudget(Transaction):
         VALUES (?, ?)
         ON CONFLICT(category) DO UPDATE SET
             budget = excluded.budget,
-            timestamp = CURRENT_TIMESTAMP
+            
         ''', (category, amount))
         connection.commit()
     except Exception as e:
@@ -57,7 +67,7 @@ def definebudget(Transaction):
     
 def getamount_by_category():
     try:
-      
+        startofmnth=get_month_start()
         amountbycata = cursor.execute('''
         SELECT 
             e.category,
@@ -65,8 +75,11 @@ def getamount_by_category():
             b.budget 
         FROM expenses e
         LEFT JOIN budgets b ON e.category = b.category
+        WHERE e.date >=?
         GROUP BY e.category
-        ''')
+        
+        
+        ''',(startofmnth,))
        
         return amountbycata
     except Exception as e:
@@ -76,7 +89,8 @@ def getamount_by_category():
 
 def get_status():
     try:
-        status_table=cursor.execute("SELECT category,budget,(CASE WHEN budget >(SELECT SUM(amount) FROM expenses WHERE category= budgets.category) THEN 'Underlimit' ELSE 'Overlimit' END) AS status FROM budgets;")
+        startofmnth=get_month_start()
+        status_table=cursor.execute("SELECT category,budget,(CASE WHEN budget >(SELECT SUM(amount) FROM expenses WHERE category= budgets.category AND date>=?) THEN 'Underlimit' ELSE 'Overlimit' END) AS status FROM budgets;",(startofmnth,))
         return status_table
     except Exception as e:
         print(e)

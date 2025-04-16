@@ -55,8 +55,8 @@ def init_db():
         CREATE TABLE IF NOT EXISTS budgets (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             category TEXT {check_clause} UNIQUE,
-            budget REAL NOT NULL,
-            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+            budget REAL NOT NULL
+            
         )
     ''')
 

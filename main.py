@@ -13,7 +13,7 @@ def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-# reset_schema()
+reset_schema()
 
 # Development Mode
 # seed_data()
