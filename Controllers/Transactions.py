@@ -19,7 +19,14 @@ def Make_Transaction():
     print("Transaction Screen")
     print("Enter Transaction Details:")
     name=input("Enter Transaction Name: ")
-    amount=input("Enter Transaction Amount(in NRS): ")
+    while(True):        
+        amount=input("Enter Transaction Amount(in NRS): ")
+        if amount.isdigit() and int(amount) < 0:
+                
+                break
+        else:
+                print("Invalid Input Try again")
+                
     for i in range(0,len(allowed_categories)):
         print(i+1,allowed_categories[i])
     while(True):        

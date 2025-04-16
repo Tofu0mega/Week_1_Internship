@@ -48,6 +48,7 @@ def Handler(key):
         
     else:
         print("Invalid Input please use numbers from 1 to 6")
+        input("Press Enter to Continue")
     
 
 def main():

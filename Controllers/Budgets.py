@@ -26,7 +26,14 @@ def Define_Budget():
             break
         else:
             print("Invalid Input Try again")
-    amount=input(f"Enter Budget Amount for {category}: ")
+    while(True):        
+        amount=input(f"Enter Budget Amount for {category}: ")
+        if amount.isdigit() and int(amount) < 0:
+                
+                break
+        else:
+                print("Invalid Input Try again")    
+         
     Transaction={
         "category": category,
         "amount":amount
