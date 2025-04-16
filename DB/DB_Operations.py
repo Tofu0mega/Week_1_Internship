@@ -117,9 +117,15 @@ def display_table(cursor,Status=False):
         status_columns=[desc[0] for desc in status_cursor.description]
         status_dataframe=pd.DataFrame(status_rows,columns=status_columns)
         final_dataframe=pd.merge(dataframe,status_dataframe,on=["budget","category"],how="left")
-        print(final_dataframe.to_string(index=False))
+        if(final_dataframe.empty):
+            print("No Records To Show")
+        else:
+            print(final_dataframe.to_string(index=False))
     else:    
         rows =cursor.fetchall()
         columns= [desc[0] for desc in cursor.description]
         dataframe= pd.DataFrame(rows,columns=columns)    
-        print(dataframe.to_string(index=False))
+        if(dataframe.empty):
+            print("No Records to Show")
+        else:
+            print(dataframe.to_string(index=False))

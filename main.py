@@ -12,15 +12,15 @@ exit_flag=True
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-
+#Clean Start( Databse is reset on every execution)
 reset_schema()
 
-# Development Mode
-seed_data()
+# Development Mode ( Has seed data to test functions)
+# seed_data()
 
 
-# Demonstration Mode
-# init_db()
+# Demonstration Mode ( Stores records between runtimes but has no seed data)
+init_db()
 # def getch():
 #     return msvcrt.getch().decode('utf-8')
 
@@ -28,13 +28,14 @@ seed_data()
 def menu_display():
     cls()
     print("""
-    1.Make Transaction
-    2.View This Months Transaction
-    3.View Transaction History
-    4.Set Budget
-    5.View Current Budget
-    6.View Transaction By Categories with Budgeting
-    7.Exit
+    💰💰Expense Trackng System💰💰
+        1.Make Transaction
+        2.View This Months Transaction
+        3.View Transaction History
+        4.Set Budget
+        5.View Current Budget
+        6.View Transaction By Categories with Budgeting
+        7.Exit
     """)
 
 
@@ -42,7 +43,7 @@ def Handler(key):
     global exit_flag
     if key == '1':
         Make_Transaction()
-    if key == '2':
+    elif key == '2':
         View_This_Mnths_Transactions()
     elif key == '3':
         View_Transaction_History()
@@ -67,7 +68,7 @@ def main():
     while(exit_flag):
         menu_display()
         # print("Enter Your Choice")
-        key=input("Enter Your Choise (1-6)")
+        key=input("Enter Your Choise (1-6): ")
         Handler(key)
         
 if __name__ == "__main__":

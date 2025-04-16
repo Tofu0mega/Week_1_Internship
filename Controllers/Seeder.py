@@ -34,7 +34,7 @@ def seed_data():
     {"name": "Room rent for May", "amount": 8000, "category": "Rent", "date": "2025-02-01 10:00:00"},
     {"name": "Fare to the airport", "amount": 500, "category": "Transportation", "date": "2025-02-02 11:00:00"},
     {"name": "Coffee with colleague", "amount": 150, "category": "Food", "date": "2025-02-03 15:30:00"},
-    {"name": "Bought new desk chair", "amount": 1200, "category": "Michalleneous", "date": "2025-02-04 13:00:00"}
+    {"name": "Bought new desk chair", "amount": 99999, "category": "Michalleneous", "date": "2025-02-04 13:00:00"}
     ]
 
     budgets_seed = [

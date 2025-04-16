@@ -55,7 +55,7 @@ def init_db():
         CREATE TABLE IF NOT EXISTS budgets (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             category TEXT {check_clause} UNIQUE,
-            budget REAL NOT NULL
+            budget REAL NOT NULL 
             
         )
     ''')
