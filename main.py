@@ -13,7 +13,7 @@ def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 #Clean Start( Databse is reset on every execution)
-reset_schema()
+# reset_schema()
 
 # Development Mode ( Has seed data to test functions)
 # seed_data()
