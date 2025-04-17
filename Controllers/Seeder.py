@@ -27,7 +27,7 @@ def seed_data():
     {"name": "Bought new shoes", "amount": 2500, "category": "Michalleneous", "date": "2025-04-10 18:00:00"},
     {"name": "Breakfast at cafe", "amount": 350, "category": "Food", "date": "2025-04-11 08:45:00"},
     {"name": "Paid monthly internet bill", "amount": 1500, "category": "Transportation", "date": "2025-04-12 09:00:00"},
-    {"name": "Dinner at friend’s house", "amount": 800, "category": "Food", "date": "2025-04-13 19:30:00"},
+    {"name": "Dinner at friends house", "amount": 800, "category": "Food", "date": "2025-04-13 19:30:00"},
     {"name": "Ticket for concert", "amount": 2500, "category": "Entertainment", "date": "2025-04-14 20:30:00"},
     {"name": "Bought a new laptop", "amount": 50000, "category": "Education", "date": "2025-02-15 14:00:00"},
     {"name": "Visited family in village", "amount": 5000, "category": "Michalleneous", "date": "2025-02-16 16:00:00"},
@@ -61,4 +61,4 @@ def seed_data():
         ''', (budget["category"], budget["budget"]))
 
     conn.commit()
-    print("🌱 Seed data inserted with updated budgets and no month field.")
+    print("🌱 Data Seeded")
