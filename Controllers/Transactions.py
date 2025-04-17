@@ -1,19 +1,15 @@
 from DB.dbconfig import get_conn, get_cursor
-from DB.DB_Operations import Add_Transaction, getalltransaction,getamount_by_category,display_table,get_status,getalltransactionmnth,delete_record,edit_record,check_record
+from DB.DB_Operations import Add_Transaction, getalltransaction,getamount_by_category,display_table,getalltransactionmnth,delete_record,edit_record,check_record,Get_categories
 import os
 import json
-categories_path ="data/allowed_categories.json"
-with open(categories_path, "r") as f:
-    category_data = json.load(f)
-    allowed_categories = category_data["categories"]
-cursor=get_cursor()
-connection=get_conn()
+
 
 
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def Make_Transaction():
+    allowed_categories=Get_categories();
     cls()
    
     print("Transaction Screen")
@@ -82,7 +78,10 @@ def Delete_Transaction():
         if(targetid=='#'):
             return
         elif(delete_record(targetid) == 1):
+            print("Record Deleted")
+            input("Press Enter To Continue")
             break
+        
         else:
             print("No Record with that Id or Invalid Input")
             input("Press Enter to Continue")
@@ -91,6 +90,7 @@ def Delete_Transaction():
     
     
 def Edit_Transaction():
+    allowed_categories=Get_categories();
     cls()
     print("Choose a Transaction to Edit")
     display_table(getalltransaction())

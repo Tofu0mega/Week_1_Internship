@@ -1,10 +1,13 @@
 from DB.dbconfig import init_db,get_conn,reset_schema
 from Controllers.Transactions import Make_Transaction,View_Transaction_History,View_Transactions_By_Categories,View_This_Mnths_Transactions,Delete_Transaction,Edit_Transaction
-from Controllers.Budgets import Define_Budget,View_Budget,Add_Category
-from Controllers.Seeder import seed_data
+from Controllers.Budgets import Define_Budget,View_Budget,Add_Category,Delete_Category
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
+load_dotenv()
+print("Loaded environment:", os.getenv('State'))
+
 # import time
 connection=get_conn()
 # import msvcrt
@@ -18,9 +21,10 @@ def cls():
 enviroment=os.getenv('State','Demo')
 
 def loaddbstates(enviroment):
+    print("Running in ",enviroment,"mode")
     if(enviroment=='Testing'):
         reset_schema()
-        seed_data()
+       
     elif(enviroment=='Development'):
         reset_schema()
     else:
@@ -32,40 +36,43 @@ def menu_display():
     cls()
     print("""
     💰💰Expense Trackng System💰💰
-        1.Make Transaction
-        2.Edit Transaction
-        3.Delete Transaction
-        4.View This Months Transaction
-        5.View Transaction History
-        6.Set Budget
-        7.View Current Budget
-        8.View Transaction By Categories with Budgeting   
-        # 9.Add Category     
+        0.Make Transaction
+        1.Edit Transaction
+        2.Delete Transaction
+        3.View This Months Transaction
+        4.View Transaction History
+        5.Set Budget
+        6.View Current Budget
+        7.View Transaction By Categories with Budgeting   
+        8.Add Category   
+        9.Delete Category
         #.Exit
     """)
 
 
 def Handler(key):
     global exit_flag
-    if key == '1':
+    if key == '0':
         Make_Transaction()
-    elif key =='2':
+    elif key =='1':
         Edit_Transaction()
-    elif key =='3':
+    elif key =='2':
         
         Delete_Transaction()
-    elif key == '4':
+    elif key == '3':
         View_This_Mnths_Transactions()
-    elif key == '5':
+    elif key == '4':
         View_Transaction_History()
-    elif key == '6':
+    elif key == '5':
        Define_Budget()
-    elif key == '7':
+    elif key == '6':
         View_Budget()
-    elif key == '8':
+    elif key == '7':
        View_Transactions_By_Categories()
-    # elif key =='9':
-    #     Add_Category()
+    elif key =='8':
+        Add_Category()
+    elif key == '9':
+        Delete_Category()
     elif key == '#':
         print("Commiting any Pending Transactions")
         connection.commit()

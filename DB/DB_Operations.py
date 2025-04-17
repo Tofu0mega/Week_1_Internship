@@ -10,6 +10,16 @@ def get_month_start():
     return start_of_month.strftime('%Y-%m-%d')
 
 
+def Get_categories():
+    try:
+        result=cursor.execute("SELECT category FROM budgets")
+        rows=result.fetchall()
+        data = [row[0] for row in rows]
+        return data
+    except Exception as e:
+        print(e)
+        input("Press Enter to Continue")
+
 def Add_Transaction(Transaction):
     try:
         name = Transaction["name"]
@@ -172,4 +182,22 @@ def check_record(id):
     except Exception as e:
         print(e)
         input("Press Enter to Exit")
+        
+# def add_category(data):
+#     try:
+#         cursor.execute("INSERT INTO budget (category,budget) VALUES (?,?)")
+# Pretty Sure Define Budget handles this use case too 😅
            
+def delete_category(id):
+    
+    try:
+        
+        result=cursor.execute("DELETE FROM budgets WHERE id = ?",(id,))
+        if result.rowcount == 0:
+            return 0;
+        else :
+            connection.commit()
+            return 1;
+    except Exception as e:
+        print(e)
+        input("Press Enter to Exit")
