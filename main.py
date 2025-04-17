@@ -3,6 +3,8 @@ from Controllers.Transactions import Make_Transaction,View_Transaction_History,V
 from Controllers.Budgets import Define_Budget,View_Budget
 from Controllers.Seeder import seed_data
 import os
+from dotenv import load_dotenv
+load_dotenv()
 # import time
 connection=get_conn()
 # import msvcrt
@@ -12,18 +14,19 @@ exit_flag=True
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-#Clean Start( Databse is reset on every execution)
-# reset_schema()
 
-# Development Mode ( Has seed data to test functions)
-# seed_data()
+enviroment=os.getenv('State','Demo')
 
+def loaddbstates(enviroment):
+    if(enviroment=='Testing'):
+        reset_schema()
+        seed_data()
+    elif(enviroment=='Development'):
+        reset_schema()
+    else:
+        init_db
 
-# Demonstration Mode ( Stores records between runtimes but has no seed data)
-init_db()
-# def getch():
-#     return msvcrt.getch().decode('utf-8')
-
+loaddbstates(enviroment)
 
 def menu_display():
     cls()
