@@ -67,7 +67,7 @@ def Handler(key):
         exit_flag=False
         
     else:
-        print("Invalid Input please use numbers from 1 to 6")
+        print("Invalid Input")
         input("Press Enter to Continue")
     
 

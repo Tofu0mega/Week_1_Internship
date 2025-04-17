@@ -18,10 +18,14 @@ def Make_Transaction():
    
     print("Transaction Screen")
     print("Enter Transaction Details:")
-    name=input("Enter Transaction Name: ")
+    name=input("Enter Transaction Name(# to back to main menu): ")
+    if(name=='#'):
+        return
     while(True):        
-        amount=input("Enter Transaction Amount(in NRS): ")
-        if amount.isdigit() and int(amount) > 0:
+        amount=input("Enter Transaction Amount(in NRS)(# to back to main menu): ")
+        if(amount=='#'):
+            return
+        elif amount.isdigit() and int(amount) > 0:
                 
                 break
         else:
@@ -30,8 +34,10 @@ def Make_Transaction():
     for i in range(0,len(allowed_categories)):
         print(i+1,allowed_categories[i])
     while(True):        
-        cataindex=input(f"Enter Category Type:(1-{len(allowed_categories)}): ")
-        if cataindex.isdigit() and 1 <= int(cataindex) <= len(allowed_categories):
+        cataindex=input(f"Enter Category Type:(1-{len(allowed_categories)})(# to back to main menu): ")
+        if(cataindex=='#'):
+            return
+        elif cataindex.isdigit() and 1 <= int(cataindex) <= len(allowed_categories):
             category=allowed_categories[int(cataindex)-1]
             break
         else:
@@ -72,8 +78,10 @@ def Delete_Transaction():
     print("Choose a Transaction to Delete")
     display_table(getalltransaction())
     while(True):
-        targetid=input('Enter Id to Delete: ')
-        if(delete_record(targetid) == 1):
+        targetid=input('Enter Id to Delete (# to back to main menu): ')
+        if(targetid=='#'):
+            return
+        elif(delete_record(targetid) == 1):
             break
         else:
             print("No Record with that Id or Invalid Input")
@@ -88,16 +96,22 @@ def Edit_Transaction():
     display_table(getalltransaction())
     while(True):
         
-        targetid=input('Enter Id to Edit:')
-        if(check_record(targetid)):
+        targetid=input('Enter Id to Edit (# to back to main menu): ')
+        if(targetid=='#'):
+            return
+        elif(check_record(targetid)):
             break
         else:
             print("Invalid Input or No Record with Such Id")
             input("Hit Enter to Continue")
     cls()
-    name=input("Enter Transaction Name: ")
+    name=input("Enter Transaction Name (# to back to main menu): ")
+    if(name=='#'):
+        return
     while(True):        
-        amount=input("Enter Transaction Amount(in NRS): ")
+        amount=input("Enter Transaction Amount(in NRS)(# to back to main menu): ")
+        if(amount=='#'):
+            return
         if amount.isdigit() and int(amount) > 0:
                 
                 break
@@ -107,8 +121,10 @@ def Edit_Transaction():
     for i in range(0,len(allowed_categories)):
         print(i+1,allowed_categories[i])
     while(True):        
-        cataindex=input(f"Enter Category Type:(1-{len(allowed_categories)}): ")
-        if cataindex.isdigit() and 1 <= int(cataindex) <= len(allowed_categories):
+        cataindex=input(f"Enter Category Type:(1-{len(allowed_categories)})(# to back to main menu): ")
+        if(cataindex=='#'):
+            return
+        elif cataindex.isdigit() and 1 <= int(cataindex) <= len(allowed_categories):
             category=allowed_categories[int(cataindex)-1]
             break
         else:
