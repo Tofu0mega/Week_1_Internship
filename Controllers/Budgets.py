@@ -52,3 +52,6 @@ def View_Budget():
     print("Current Budget Listing")
     display_table(getdefinedbudget())
     input("Press Enter to Continue")
+    
+def Add_Category():
+    cls()

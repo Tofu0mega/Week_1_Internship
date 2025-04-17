@@ -1,6 +1,6 @@
 from DB.dbconfig import init_db,get_conn,reset_schema
 from Controllers.Transactions import Make_Transaction,View_Transaction_History,View_Transactions_By_Categories,View_This_Mnths_Transactions,Delete_Transaction,Edit_Transaction
-from Controllers.Budgets import Define_Budget,View_Budget
+from Controllers.Budgets import Define_Budget,View_Budget,Add_Category
 from Controllers.Seeder import seed_data
 import os
 from dotenv import load_dotenv
@@ -39,8 +39,9 @@ def menu_display():
         5.View Transaction History
         6.Set Budget
         7.View Current Budget
-        8.View Transaction By Categories with Budgeting        
-        9.Exit
+        8.View Transaction By Categories with Budgeting   
+        # 9.Add Category     
+        #.Exit
     """)
 
 
@@ -63,7 +64,9 @@ def Handler(key):
         View_Budget()
     elif key == '8':
        View_Transactions_By_Categories()
-    elif key == '9':
+    # elif key =='9':
+    #     Add_Category()
+    elif key == '#':
         print("Commiting any Pending Transactions")
         connection.commit()
         print("Commited...Exiting")
