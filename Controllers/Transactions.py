@@ -1,7 +1,7 @@
-from DB.dbconfig import get_conn, get_cursor
+
 from DB.DB_Operations import Add_Transaction, getalltransaction,getamount_by_category,display_table,getalltransactionmnth,delete_record,edit_record,check_record,Get_categories
 import os
-import json
+
 
 
 

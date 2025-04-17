@@ -1,5 +1,5 @@
 from .dbconfig import get_conn, get_cursor
-from datetime import datetime,timedelta
+from datetime import datetime
 import pandas as pd
 cursor=get_cursor()
 connection=get_conn()

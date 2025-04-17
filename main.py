@@ -60,8 +60,7 @@ def Handler(key):
         Make_Transaction()
     elif key =='1':
         Edit_Transaction()
-    elif key =='2':
-        
+    elif key =='2':        
         Delete_Transaction()
     elif key == '3':
         View_This_Mnths_Transactions()
