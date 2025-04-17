@@ -20,11 +20,7 @@ def Add_Transaction(Transaction):
     except Exception as e:
         print(e)
         input("Press Enter to continue...")
- 
-        
-        
-
-    
+       
 
 def getalltransactionmnth():
     try:
@@ -79,14 +75,16 @@ def getamount_by_category():
     try:
         startofmnth=get_month_start()
         amountbycata = cursor.execute('''
-        SELECT 
+                SELECT 
             e.category,
             SUM(e.amount) AS total_amount,
-            b.budget 
+            b.budget,
+            (b.budget - SUM(e.amount)) AS available_balance
         FROM expenses e
         LEFT JOIN budgets b ON e.category = b.category
-        WHERE e.date >=?
-        GROUP BY e.category
+        WHERE e.date >= ?
+        GROUP BY e.category, b.budget
+
         
         
         ''',(startofmnth,))
@@ -100,7 +98,7 @@ def getamount_by_category():
 def get_status():
     try:
         startofmnth=get_month_start()
-        status_table=cursor.execute("SELECT category,budget,(CASE WHEN budget >(SELECT SUM(amount) FROM expenses WHERE category= budgets.category AND date>=?) THEN 'Underlimit' ELSE 'Overlimit' END) AS status FROM budgets;",(startofmnth,))
+        status_table=cursor.execute("SELECT category,budget,(CASE WHEN budget >(SELECT SUM(amount) FROM expenses WHERE category= budgets.category AND date>=?) THEN 'Under_Budget' ELSE 'Over_Budget' END) AS status FROM budgets;",(startofmnth,))
         return status_table
     except Exception as e:
         print(e)
@@ -142,7 +140,9 @@ def delete_record(id):
     except Exception as e:
         print(e)
         input("Press Enter to Exit")
-    
+
+
+
 def edit_record(NewData):
     try:
         targetid=NewData["id"]
@@ -158,6 +158,8 @@ def edit_record(NewData):
     except Exception as e:
         print(e)
         input("Press Enter to Continue")
+
+
 
 def check_record(id):
     try:
