@@ -22,13 +22,17 @@ enviroment=os.getenv('State','Demo')
 
 def loaddbstates(enviroment):
     print("Running in ",enviroment,"mode")
-    if(enviroment=='Testing'):
-        reset_schema()
+    input("Press Enter to Start")
+
+        
        
-    elif(enviroment=='Development'):
+    if(enviroment=='Development'):
+        reset_schema()
+        init_db()
+    elif(enviroment=='Clean'):
         reset_schema()
     else:
-        init_db
+        init_db()
 
 loaddbstates(enviroment)
 

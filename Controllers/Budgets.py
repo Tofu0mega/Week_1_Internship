@@ -1,11 +1,7 @@
 from DB.dbconfig import get_conn, get_cursor
 from DB.DB_Operations import definebudget,getdefinedbudget,display_table,Get_categories,delete_category
 import os
-import json
-categories_path ="data/allowed_categories.json"
-with open(categories_path, "r") as f:
-    category_data = json.load(f)
-    allowed_categories = category_data["categories"]
+
 cursor=get_cursor()
 connection=get_conn()
 
@@ -16,6 +12,7 @@ def cls():
     
     
 def Define_Budget():
+    allowed_categories=Get_categories();
     cls()
     print("Budget Screen")
     for i in range(0,len(allowed_categories)):

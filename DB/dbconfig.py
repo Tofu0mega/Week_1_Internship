@@ -59,19 +59,24 @@ def init_db():
             FOREIGN KEY (category) REFERENCES budgets(category) ON DELETE CASCADE
         )
     ''')
-    
-    _cursor.executemany(
-        "INSERT OR IGNORE INTO budgets (category) VALUES (?)",
-      [(cat,) for cat in default_categories]
+    _conn.commit()
+    result=_cursor.execute("SELECT * FROM budgets")
+    data=result.fetchall()
+   
+    if not data: 
+        _cursor.executemany(
+            "INSERT OR IGNORE INTO budgets (category) VALUES (?)",
+        [(cat,) for cat in default_categories]
+        
 
  
-    )
+        )
+        _conn.commit()
 
 
     
     
 
-    _conn.commit()
     print("📦 Tables created/verified")
 
 def get_conn():
@@ -83,6 +88,6 @@ def get_cursor():
 def reset_schema():
     _cursor.execute("DROP TABLE IF EXISTS expenses")
     _cursor.execute("DROP TABLE IF EXISTS budgets")
-    init_db()
+    
     print("♻️ Schema reset")
 
