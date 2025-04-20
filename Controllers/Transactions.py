@@ -7,9 +7,37 @@ import os
 
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
+    
+def cataselect():
+    allowed_categories=Get_categories();
+    for i in range(0,len(allowed_categories)):
+            print(i+1,allowed_categories[i])
+    while(True):        
+        cataindex=input(f"Enter Category Type:(1-{len(allowed_categories)})(# to back to main menu): ")
+        if(cataindex=='#'):
+            return "#"
+        elif cataindex.isdigit() and 1 <= int(cataindex) <= len(allowed_categories):
+            category=allowed_categories[int(cataindex)-1]
+            return category
+            
+        else:
+            print("Invalid Input Try again")
+            
+            
+def amountselect():
+    while(True):        
+        amount=input("Enter Transaction Amount(in NRS)(# to back to main menu): ")
+        if(amount=='#'):
+            return "#"
+        elif amount.isdigit() and int(amount) > 0:
+                
+                return amount
+        else:
+                print("Invalid Input Try again")
+   
 
 def Make_Transaction():
-    allowed_categories=Get_categories();
+    
     cls()
    
     print("Transaction Screen")
@@ -17,27 +45,11 @@ def Make_Transaction():
     name=input("Enter Transaction Name(# to back to main menu): ")
     if(name=='#'):
         return
-    while(True):        
-        amount=input("Enter Transaction Amount(in NRS)(# to back to main menu): ")
-        if(amount=='#'):
-            return
-        elif amount.isdigit() and int(amount) > 0:
-                
-                break
-        else:
-                print("Invalid Input Try again")
-                
-    for i in range(0,len(allowed_categories)):
-        print(i+1,allowed_categories[i])
-    while(True):        
-        cataindex=input(f"Enter Category Type:(1-{len(allowed_categories)})(# to back to main menu): ")
-        if(cataindex=='#'):
-            return
-        elif cataindex.isdigit() and 1 <= int(cataindex) <= len(allowed_categories):
-            category=allowed_categories[int(cataindex)-1]
-            break
-        else:
-            print("Invalid Input Try again")
+    amount=amountselect()
+    if amount=="#":return
+    category=cataselect()
+    if category=="#":return            
+    
     Transaction = {
     "name": name,
     "amount": amount,
@@ -108,27 +120,12 @@ def Edit_Transaction():
     name=input("Enter Transaction Name (# to back to main menu): ")
     if(name=='#'):
         return
-    while(True):        
-        amount=input("Enter Transaction Amount(in NRS)(# to back to main menu): ")
-        if(amount=='#'):
-            return
-        if amount.isdigit() and int(amount) > 0:
+    amount=amountselect()
+    if amount =="#":return
+    category=cataselect()
+    if category =="#":return
                 
-                break
-        else:
-                print("Invalid Input Try again")
-                
-    for i in range(0,len(allowed_categories)):
-        print(i+1,allowed_categories[i])
-    while(True):        
-        cataindex=input(f"Enter Category Type:(1-{len(allowed_categories)})(# to back to main menu): ")
-        if(cataindex=='#'):
-            return
-        elif cataindex.isdigit() and 1 <= int(cataindex) <= len(allowed_categories):
-            category=allowed_categories[int(cataindex)-1]
-            break
-        else:
-            print("Invalid Input Try again")
+    
     Transaction = {
     "name": name,
     "amount": amount,

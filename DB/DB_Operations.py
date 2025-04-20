@@ -85,11 +85,11 @@ def getamount_by_category():
     try:
         startofmnth=get_month_start()
         amountbycata = cursor.execute('''
-                SELECT 
-            e.category,
-            SUM(e.amount) AS total_amount,
-            b.budget,
-            (b.budget - SUM(e.amount)) AS available_balance
+        SELECT 
+        e.category,
+        SUM(e.amount) AS total_amount,
+        b.budget,
+        (b.budget - SUM(e.amount)) AS available_balance
         FROM expenses e
         LEFT JOIN budgets b ON e.category = b.category
         WHERE e.date >= ?
