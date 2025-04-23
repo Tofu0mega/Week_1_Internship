@@ -65,7 +65,7 @@ def init_db():
    
     if not data: 
         _cursor.executemany(
-            "INSERT OR IGNORE INTO budgets (category) VALUES (?)",
+            "INSERT OR IGNORE INTO budgets (category,budget) VALUES (?,3000)",
         [(cat,) for cat in default_categories]
         
 
