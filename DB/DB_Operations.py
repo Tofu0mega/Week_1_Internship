@@ -183,10 +183,7 @@ def check_record(id):
         print(e)
         input("Press Enter to Exit")
         
-# def add_category(data):
-#     try:
-#         cursor.execute("INSERT INTO budget (category,budget) VALUES (?,?)")
-# Pretty Sure Define Budget handles this use case too 😅
+
            
 def delete_category(id):
     

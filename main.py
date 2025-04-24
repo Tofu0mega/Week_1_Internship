@@ -8,9 +8,9 @@ load_dotenv()
 load_dotenv()
 print("Loaded environment:", os.getenv('State'))
 
-# import time
+
 connection=get_conn()
-# import msvcrt
+
 exit_flag=True
 
 
@@ -90,7 +90,7 @@ def Handler(key):
 def main():
     while(exit_flag):
         menu_display()
-        # print("Enter Your Choice")
+ 
         key=input("Enter Your Choise (1-9): ")
         Handler(key)
         

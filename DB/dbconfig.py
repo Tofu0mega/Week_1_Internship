@@ -6,7 +6,6 @@ import os
 os.makedirs("data", exist_ok=True)
 
 
-# categories_path = "data/allowed_categories.json"
 
 
 default_categories =  [
@@ -19,19 +18,7 @@ default_categories =  [
     ]
 
 
-# if not os.path.exists(categories_path):
-#     with open(categories_path, "w") as f:
-#         json.dump(default_categories, f, indent=4)
-#     print("✅ Default allowed_categories.json created")
 
-
-# with open(categories_path, "r") as f:
-#     category_data = json.load(f)
-#     allowed_categories = category_data["categories"]
-
-
-# allowed_categories_sql = ", ".join([f"'{category}'" for category in allowed_categories])
-# check_clause = f"CHECK (category IN ({allowed_categories_sql}))"
 
 
 _conn = sqlite3.connect("data/expenses.db", check_same_thread=False)
